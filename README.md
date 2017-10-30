@@ -11,7 +11,7 @@ RESTFUL API Backend.
 Install the dependencies and devDependencies and start the server.
 
 ```sh
-$ cd travelpedia-server
+$ cd travelpedia-backend
 $ npm install
 $ npm start
 ```
