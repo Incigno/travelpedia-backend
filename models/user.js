@@ -88,12 +88,10 @@ module.exports = (sequelize, DataTypes) => {
     isEmailVerified: DataTypes.BOOLEAN,
     isPhoneVerified: DataTypes.BOOLEAN,
     imageProfilUrl: DataTypes.STRING
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
   });
+  
+  User.associate = function (models) {
+    User.hasMany(models.Location)
+  };
   return User;
 };

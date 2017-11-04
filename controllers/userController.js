@@ -1,4 +1,5 @@
 var User = require('../models').User;
+var Location = require('../models').Location;
 var passwordHash = require('password-hash');
 var jwthelpers = require('../helpers/jwtHelpers');
 var Sequelize = require('sequelize');
@@ -115,6 +116,16 @@ module.exports = {
         }
       }).catch(error => {
         cb(null,{success:false,data:null,message:'Signin Failed',error_message:error.toString()});
+      });
+    },
+    getTimeline: (req, res, next) => {
+      Location.findAll({
+        include: [{ all: true, nested: true }],
+        order: [['createdAt', 'DESC']]
+      }).then(user => {
+        res.json({success:true,data:user,message:'success get all user.',error_message:''});
+      }).catch(error => {
+        res.json({success:false,data:null,message:'failed get all user.',error_message:error.toString()});
       });
     }
 }
