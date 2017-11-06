@@ -24,6 +24,7 @@ $ npm start
 |/signup       |   POST   |      sign up with new user info|
 |/signin       |   POST   |      sign in while get an access token based on credentials|
 |/timeline       |   GET   |      get timeline|
+|/timeline/name/:key       |   GET   |      get timeline by name|
 | ------ | ------ |------ |
 |/users       |   GET   |      get all the users (use tokens)|
 |/user/id/:key       |   GET   |      get the user by id (use tokens)|
