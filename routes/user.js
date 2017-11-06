@@ -11,6 +11,7 @@ router.post('/signin', passport.authenticate('local', {
   var user = req.user;
   res.json(user);
 });
+router.get('/timeline', controllers.getTimeline); //login first
 router.get('/users', jwthelpers.login, controllers.getAll); //login first
 router.get('/user/id/:key', jwthelpers.login, controllers.getbyId); //login first
 router.get('/user/username/:key', jwthelpers.login, controllers.getbyUsername); //login first
