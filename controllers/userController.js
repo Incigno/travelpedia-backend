@@ -123,9 +123,26 @@ module.exports = {
         include: [{ all: true, nested: true }],
         order: [['createdAt', 'DESC']]
       }).then(user => {
-        res.json({success:true,data:user,message:'success get all user.',error_message:''});
+        res.json({success:true,data:user,message:'success get timeline.',error_message:''});
       }).catch(error => {
-        res.json({success:false,data:null,message:'failed get all user.',error_message:error.toString()});
+        res.json({success:false,data:null,message:'failed get timeline.',error_message:error.toString()});
+      });
+    },
+    getTimelineByName: (req, res, next) => {
+      var name = req.params.key;
+      name = '%'+name+'%';
+      Location.findAll({
+        where: {
+           locationName: {
+             [Op.iLike]: name
+           }
+         },
+         include: [{ all: true, nested: true }],
+         order: [['createdAt', 'DESC']]
+      }).then(user => {
+        res.json({success:true,data:user,message:'success get timeline by name.',error_message:''});
+      }).catch(error => {
+        res.json({success:false,data:null,message:'failed get timeline by name = '+req.params.key,error_message:error.toString()});
       });
     }
 }
